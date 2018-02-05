@@ -1,11 +1,21 @@
 \documentclass{article}
 
-\usepackage{url}
+\usepackage{graphicx}
+\graphicspath{ {figures/} }
+\usepackage[hyphens]{url}
+
+% Load last
+\usepackage{hyperref}
+
+
+\bibliographystyle{abbrv}
 
 \begin{document}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{Git Branching Strategy}
 \author{Matthew Kuperus Heun}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \maketitle
 
@@ -15,8 +25,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 This document gives my strategy for branching in a git repository. 
-The strategy is based on the fine blog post by Vincent Driessen at\\
-\url{http://nvie.com/posts/a-successful-git-branching-model/}
+The strategy is based on the fine blog post by Vincent Driessen
 and other resources.
 Adherence to this strategy will enable better development processes
 \end{abstract}
@@ -27,32 +36,92 @@ Adherence to this strategy will enable better development processes
 \label{sec:introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Branching can greatly assist software development projects, 
+The use of branches can greatly assist software development projects, 
 particularly when developers need to both 
 work on new features and maintain released code.
-However, it can be difficult to remember 
+
+This document gives my model for branching in a git repository. 
+The strategy is based on the fine blog post by Vincent Driessen~\cite{Driessen:2010}
+and other resources~\cite{Onkelinx:2017, Rankin:2010}.
+The model assumes the existence of \texttt{github} or a similar remote repository
+and use of the RStudio IDE, 
+although the model (if not the details) 
+will apply to other IDEs that support branching. 
+
+In addition, it can be difficult to remember 
 all of the \texttt{git} commands for branching and merging.
-This document gathers all commands in a single place.
-
-This document gives my strategy for branching in a git repository. 
-The strategy is based on the fine blog post by Vincent Driessen at\\
-\url{http://nvie.com/posts/a-successful-git-branching-model/}
-and other resources.
-Adherence to this strategy will enable better development processes
+This document gathers all commands in a single place
+and discusses the commands in the context of the overall workflow.
+ 
+Adherence to this strategy and use of these commands 
+will improve my software development processes.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Workflow} 
+\label{sec:workflow}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Subsection Heading Here}
-Write your subsection text here.
+The workflow presented here assumes familiarity 
+with the Driessen branching model. 
+All \texttt{git} commands can be entered 
+at the command line of the developer's local computer
+in the root directory of the repository.
+Both Terminal.app (MacOS) and the Terminal window of RStudio
+can be used for this purpose.
 
-% \begin{figure}
-%     \centering
-%     \includegraphics[width=3.0in]{myfigure}
-%     \caption{Simulation Results}
-%     \label{simulationfigure}
-% \end{figure}
+
+%++++++++++++++++++++++++++++++
+\subsection{Setup} 
+\label{sec:setup}
+%++++++++++++++++++++++++++++++
+
+Use the following workflow to establish a repository and 
+create the master (release) and develop branches.
+
+\begin{enumerate}
+
+  \item Create a git repository
+
+  \item Clone the repository, duplicating the \texttt{master} branch on the local computer:
+  		\texttt{git clone git@github.com:MatthewHeun/<<RepositoryName>>.git}
+  
+  \item Create the \texttt{develop} branch: 
+  		\texttt{git checkout -b develop master}
+
+  \item If needed, click the refresh icon 
+  		(\raisebox{-0.3\height}{\includegraphics[scale=0.5]{refresh}}) in the Git pane of RStudio to 
+  		show that the project is now on the \texttt{develop} branch.
+  
+\end{enumerate}
+
+
+%++++++++++++++++++++++++++++++
+\subsection{Work on a feature} 
+\label{sec:feature}
+%++++++++++++++++++++++++++++++
+
+\begin{enumerate}
+
+  \item Create a feature branch 
+
+  \item
+
+\end{enumerate}
+
+
+
+
 
 \section{Conclusion}
+
 Write your conclusion here.
+
+
+
+
+\bibliography{references}
+
+
 
 \end{document}

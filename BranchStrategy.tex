@@ -1,11 +1,12 @@
 \documentclass{article}
 
-\usepackage{graphicx}
-\graphicspath{ {figures/} }
-\usepackage[hyphens]{url}
+\usepackage{graphicx}			% Provides graphics utilities
+\graphicspath{ {figures/} }		% Sets graphics path
+\usepackage{pdfpages}   		% Allows pdfs to be inserte into this document
+\usepackage[hyphens]{url}		% Breaks long URLs across lines
 
 % Load last
-\usepackage{hyperref}
+\usepackage{hyperref}			% Makes hyperlinks in .pdf output
 
 
 \bibliographystyle{abbrv}
@@ -58,13 +59,34 @@ will improve my software development processes.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Workflow} 
-\label{sec:workflow}
+\section{Rules} 
+\label{sec:rules}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The workflow presented here assumes familiarity 
-with the Driessen branching model. 
-All \texttt{git} commands can be entered 
+\begin{enumerate}
+
+  \item The \texttt{master} and \texttt{develop} branches are persistant
+  
+  \item Only one (1) \texttt{release-x.x.x} branch can exist at any given time
+
+  \item Only one (1) \texttt{hotfix-x.x.x} branch can exist at any given time
+  
+  \item Any number of feature branches can co-exist
+  
+  \item Releases are retrieved by reverting to tags
+
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Workflows} 
+\label{sec:workflows}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The workflows presented here assume familiarity 
+with the Driessen branching model~\cite{Driessen:2010}. 
+(See attached figure.)
+All \texttt{git} commands must be entered 
 at the command line of the developer's local computer
 in the root directory of the repository.
 Both Terminal.app (MacOS) and the Terminal window of RStudio
@@ -77,7 +99,7 @@ can be used for this purpose.
 %++++++++++++++++++++++++++++++
 
 Use the following workflow to establish a repository and 
-create the master (release) and develop branches.
+create the \texttt{master} (release) and \texttt{develop} branches.
 %
 \begin{enumerate}
 
@@ -107,18 +129,24 @@ create the master (release) and develop branches.
 \label{sec:feature}
 %++++++++++++++++++++++++++++++
 
+Use the following steps to develop a feature.
+
 \begin{enumerate}
 
-  \item Create a feature branch: \texttt{git checkout -b newfeature develop} 
+  \item Switch to develop branch: \texttt{git checkout develop}
 
-  \item If this feature is to be pushed to github, RStudio won't be able to do so until you
+  \item Create a feature branch: \texttt{git checkout -b newfeature develop} 
+  
+  \item Work on the feature
+
+  \item Commit changes locally
+
+  \item If \texttt{newfeature} is to be pushed to github, RStudio won't be able to do so until you
   %
   \begin{enumerate}
 
-    \item Commit changes
-
     \item Make an initial push of the \texttt{newfeature} branch
-	      to the origin (github):\\
+	      to the origin (github):
 		  \texttt{git push -u origin newfeature} 
 	
 	\item Future pushes to github can be made using the RStudio interface.
@@ -135,6 +163,18 @@ create the master (release) and develop branches.
 
   \end{enumerate}
   %
+  \item When satisfied, delete \texttt{newfeature} branch
+  %
+  \begin{enumerate}
+
+    \item Switch to develop branch: \texttt{git checkout develop}
+
+    \item Delete locally: \texttt{git branch -d newfeature}
+
+    \item Delete remote (if necessary): \texttt{git push -d origin newfeature} 
+
+  \end{enumerate}
+  %
 \end{enumerate}
 
 
@@ -143,31 +183,215 @@ create the master (release) and develop branches.
 \label{sec:prep-for-release}
 %++++++++++++++++++++++++++++++
 
+Use the following steps to prepare for a release.
+
 \begin{enumerate}
 
   \item Switch to develop branch: \texttt{git checkout develop}
 
   \item Create a release branch: \texttt{git checkout -b release-x.x.x develop} 
 
-  \item Update documentation to reflect new release number (\texttt{x.x.x}) and date.
+  \item Update documentation to reflect new version (\texttt{x.x.x}) and date.
   
-  \item Prepare release notes.
+  \item Prepare release notes
   
-  \item Commit locally.
+  \item Commit locally
   
-  \item Push to origin: 
+  \item If the \texttt{release-x.x.x} branch is to be pushed to github, RStudio won't be able to do so until you
+  %
+  \begin{enumerate}
+
+    \item Commit locally
+
+    \item Make an initial push of the \texttt{release-x.x.x} branch
+	      to the origin (github): 
+		  \texttt{git push -u origin release-x.x.x} 
+	
+	\item Future pushes to github can be made using the RStudio interface.
+
+  \end{enumerate}
 
 \end{enumerate}
-%
 
 
+%++++++++++++++++++++++++++++++
+\subsection{Release} 
+\label{sec:release}
+%++++++++++++++++++++++++++++++
+
+Use the following steps to release a new version (\texttt{x.x.x}).
+
+\begin{enumerate}
+
+  \item Merge \texttt{release-x.x.x} into \texttt{master}
+  %
+  \begin{enumerate}
+
+    \item Switch to master branch: \texttt{git checkout master} 
+
+    \item Perform merge: \texttt{git merge --no-ff release-x.x.x}
+
+  \end{enumerate}
+  %
+  \item Tag the release
+  %
+  \begin{enumerate}
+
+    \item Tag local: \texttt{git tag -a vx.x.x}
+
+    \item Tag remote (github)
+	%
+	\begin{enumerate}
+
+	  \item Navigate to github page for the repository\\
+	  		(\texttt{http://github.com/MatthewHeun/<<RepositoryName>>})
+
+	  \item Click the releases button (\raisebox{-0.3\height}{\includegraphics[scale=0.5]{releases_button}})
+	  
+	  \item Create a new release
+
+	\end{enumerate}
+	%
+
+  \end{enumerate}
+  %
+  \item Merge release information back into the \texttt{develop} branch
+  %
+  \begin{enumerate}
+
+	\item Switch to develop branch: \texttt{git checkout develop}
+
+    \item Perform merge: \texttt{git merge --no-ff release-x.x.x}
+
+  \end{enumerate}
+  %
+  \item Fix any conflicts that arise in the \texttt{develop} branch
+  
+  \item When satisfied, delete \texttt{release-x.x.x} branch
+  %
+  \begin{enumerate}
+
+    \item Switch to develop branch: \texttt{git checkout develop}
+
+    \item Delete locally: \texttt{git branch -d release-x.x.x}
+
+    \item Delete remote (if necessary): \texttt{git push -d origin release-x.x.x} 
+
+  \end{enumerate}
+  
+\end{enumerate}
+  
+
+%++++++++++++++++++++++++++++++
+\subsection{Perform a hotfix} 
+\label{sec:hotfix}
+%++++++++++++++++++++++++++++++
+
+Execute the following steps to perform a hotfix to the current release.
+
+\begin{enumerate}
+
+  \item Switch to master branch: \texttt{git checkout -b master} 
+
+  \item Create hotfix branch: \texttt{git checkout -b hotfix-x.x.x master} 
+	
+  \item Develop the fix
+	
+  \item Update documentation to reflect new version (\texttt{x.x.x}) and date.
+  
+  \item Prepare release notes
+  
+  \item Commit locally
+	
+  \item If \texttt{hotfix-x.x.x} is to be pushed to github, RStudio won't be able to do so until you
+  %
+  \begin{enumerate}
+
+    \item Make an initial push of the \texttt{hotfix-x.x.x} branch
+  	      to the origin (github):
+  		  \texttt{git push -u origin hotfix-x.x.x} 
+	
+  	\item Future pushes to github can be made using the RStudio interface.
+
+  \end{enumerate}
+  %
+  \item Merge \texttt{hotfix-x.x.x} into \texttt{master}  
+  %
+  \begin{enumerate}
+
+    \item Switch to master branch: \texttt{git checkout master} 
+	
+    \item Perform merge: \texttt{git merge --no-ff hotfix-x.x.x} 
+
+  \end{enumerate}
+  %
+  \item Tag the release
+  %
+  \begin{enumerate}
+
+    \item Tag local: \texttt{git tag -a vx.x.x}
+
+    \item Tag remote (github)
+	%
+	\begin{enumerate}
+
+	  \item Navigate to github page for the repository
+
+	  \item Click the releases button (\raisebox{-0.3\height}{\includegraphics[scale=0.5]{releases_button}})
+	  
+	  \item Create a new release
+
+	\end{enumerate}
+	%
+  \end{enumerate}
+  
+  \item \emph{If a release branch exists}, 
+  		merge \texttt{hotfix-x.x.x} into the release branch
+  %
+  \begin{enumerate}
+
+    \item Switch to the release branch: \texttt{git checkout release-x.x.x} 
+
+    \item Perform merge: \texttt{git merge --no-ff hotfix-x.x.x} 
+
+	\item Fix conflicts
+
+  \end{enumerate}
+  %
+  \item \emph{If no release branch exists}, merge \texttt{hotfix-x.x.x} into \texttt{develop} 
+  %
+  \begin{enumerate}
+
+    \item Switch to \texttt{develop branch}: \texttt{git checkout develop} 
+
+    \item Perform merge: \texttt{git merge --no-ff hotfix-x.x.x} 
+	
+	\item Fix conflicts
+
+  \end{enumerate}
+  %
+  \item When satisfied, delete \texttt{hotfix-x.x.x} branch
+  %
+  \begin{enumerate}
+
+    \item Switch to \texttt{master} branch: \texttt{git checkout master}
+
+    \item Delete locally: \texttt{git branch -d hotfix-x.x.x}
+
+    \item Delete remote (if necessary): \texttt{git push -d origin hotfix-x.x.x} 
+
+  \end{enumerate}
+  
+
+\end{enumerate}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion} 
+\label{sec:conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\section{Conclusion}
-
-Write your conclusion here.
+The rules and workflows above will greatly assist development of projects ...
 
 
 
@@ -175,5 +399,6 @@ Write your conclusion here.
 \bibliography{references}
 
 
+\includepdf[pages={1}]{Git-branching-model.pdf}
 
 \end{document}

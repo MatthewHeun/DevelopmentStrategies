@@ -78,7 +78,7 @@ can be used for this purpose.
 
 Use the following workflow to establish a repository and 
 create the master (release) and develop branches.
-
+%
 \begin{enumerate}
 
   \item Create a git repository
@@ -88,6 +88,12 @@ create the master (release) and develop branches.
   
   \item Create the \texttt{develop} branch: 
   		\texttt{git checkout -b develop master}
+		
+  \item Make an initial push of the \texttt{develop} branch to origin (github):
+        \texttt{git push -u origin develop}
+		
+  \item Future pushes to github from the \\texttt{develop} branch 
+  		can be made from RStudio's \texttt{git interface}.
 
   \item If needed, click the refresh icon 
   		(\raisebox{-0.3\height}{\includegraphics[scale=0.5]{refresh}}) in the Git pane of RStudio to 
@@ -97,17 +103,63 @@ create the master (release) and develop branches.
 
 
 %++++++++++++++++++++++++++++++
-\subsection{Work on a feature} 
+\subsection{Develop a feature (\texttt{newfeature})} 
 \label{sec:feature}
 %++++++++++++++++++++++++++++++
 
 \begin{enumerate}
 
-  \item Create a feature branch 
+  \item Create a feature branch: \texttt{git checkout -b newfeature develop} 
 
-  \item
+  \item If this feature is to be pushed to github, RStudio won't be able to do so until you
+  %
+  \begin{enumerate}
+
+    \item Commit changes
+
+    \item Make an initial push of the \texttt{newfeature} branch
+	      to the origin (github):\\
+		  \texttt{git push -u origin newfeature} 
+	
+	\item Future pushes to github can be made using the RStudio interface.
+
+  \end{enumerate}
+  %
+  \item When complete, merge \texttt{newfeature} with the \texttt{develop} branch:
+  %
+  \begin{enumerate}
+
+    \item Switch to develop branch: \texttt{git checkout develop}
+
+    \item Merge \texttt{newfeature} into develop: \texttt{git merge --no-ff newfeature}
+
+  \end{enumerate}
+  %
+\end{enumerate}
+
+
+%++++++++++++++++++++++++++++++
+\subsection{Prepare for release} 
+\label{sec:prep-for-release}
+%++++++++++++++++++++++++++++++
+
+\begin{enumerate}
+
+  \item Switch to develop branch: \texttt{git checkout develop}
+
+  \item Create a release branch: \texttt{git checkout -b release-x.x.x develop} 
+
+  \item Update documentation to reflect new release number (\texttt{x.x.x}) and date.
+  
+  \item Prepare release notes.
+  
+  \item Commit locally.
+  
+  \item Push to origin: 
 
 \end{enumerate}
+%
+
 
 
 

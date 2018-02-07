@@ -114,7 +114,7 @@ create the \texttt{master} (release) and \texttt{develop} branches.
   \item Make an initial push of the \texttt{develop} branch to origin (github):
         \texttt{git push -u origin develop}
 		
-  \item Future pushes to github from the \\texttt{develop} branch 
+  \item Future pushes to github from the \texttt{develop} branch 
   		can be made from RStudio's \texttt{git interface}.
 
   \item If needed, click the refresh icon 
@@ -160,6 +160,10 @@ Use the following steps to develop a feature.
     \item Switch to develop branch: \texttt{git checkout develop}
 
     \item Merge \texttt{newfeature} into develop: \texttt{git merge --no-ff newfeature}
+	
+	\item Add a commit comment (or accept the default) using \texttt{vi} 
+	
+	\item Save the comment using \texttt{ZZ} (``save'' in \texttt{vi})
 
   \end{enumerate}
   %
@@ -230,6 +234,10 @@ Use the following steps to release a new version (\texttt{x.x.x}).
     \item Switch to master branch: \texttt{git checkout master} 
 
     \item Perform merge: \texttt{git merge --no-ff release-x.x.x}
+	
+	\item Add a commit comment (or accept the default) using \texttt{vi} 
+	
+	\item Save the comment using \texttt{ZZ} (``save'' in \texttt{vi})
 
   \end{enumerate}
   %
@@ -262,6 +270,10 @@ Use the following steps to release a new version (\texttt{x.x.x}).
 	\item Switch to develop branch: \texttt{git checkout develop}
 
     \item Perform merge: \texttt{git merge --no-ff release-x.x.x}
+	
+	\item Add a commit comment (or accept the default) using \texttt{vi} 
+	
+	\item Save the comment using \texttt{ZZ} (``save'' in \texttt{vi})
 
   \end{enumerate}
   %
@@ -310,7 +322,11 @@ Execute the following steps to perform a hotfix to the current release.
     \item Make an initial push of the \texttt{hotfix-x.x.x} branch
   	      to the origin (github):
   		  \texttt{git push -u origin hotfix-x.x.x} 
-	
+		  
+	\item If needed, click the refresh icon 
+  		  (\raisebox{-0.3\height}{\includegraphics[scale=0.5]{refresh}}) in the Git pane of RStudio to 
+  		  show that the branch can be pushed to origin (github)
+
   	\item Future pushes to github can be made using the RStudio interface.
 
   \end{enumerate}
@@ -322,6 +338,10 @@ Execute the following steps to perform a hotfix to the current release.
     \item Switch to master branch: \texttt{git checkout master} 
 	
     \item Perform merge: \texttt{git merge --no-ff hotfix-x.x.x} 
+	
+	\item Add a commit comment (or accept the default) using \texttt{vi} 
+	
+	\item Save the comment using \texttt{ZZ} (``save'' in \texttt{vi})
 
   \end{enumerate}
   %
@@ -352,9 +372,13 @@ Execute the following steps to perform a hotfix to the current release.
 
     \item Switch to the release branch: \texttt{git checkout release-x.x.x} 
 
-    \item Perform merge: \texttt{git merge --no-ff hotfix-x.x.x} 
-
-	\item Fix conflicts
+    \item Attempt merge: \texttt{git merge --no-ff hotfix-x.x.x}
+	
+	\item Fix conflicts as needed
+	
+	\item When successful, add a commit comment (or accept the default) using \texttt{vi} 
+	
+	\item Save the comment using \texttt{ZZ} (``save'' in \texttt{vi})
 
   \end{enumerate}
   %
@@ -366,7 +390,11 @@ Execute the following steps to perform a hotfix to the current release.
 
     \item Perform merge: \texttt{git merge --no-ff hotfix-x.x.x} 
 	
-	\item Fix conflicts
+	\item Fix conflicts as needed
+	
+	\item Add a commit comment (or accept the default) using \texttt{vi} 
+	
+	\item Save the comment using \texttt{ZZ} (``save'' in \texttt{vi})
 
   \end{enumerate}
   %

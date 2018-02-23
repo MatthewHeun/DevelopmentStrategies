@@ -202,7 +202,16 @@ Use the following steps to prepare for a release.
   \item Create a release branch: \texttt{git checkout -b release-x.x.x develop} 
 
   \item Update documentation to reflect new version (\texttt{x.x.x}) and date.
-  
+        At a minimum, 
+  %
+  \begin{enumerate}
+
+    \item Update \texttt{DESCRIPTION}, including \texttt{Version:} and \texttt{Date:} fields 
+
+    \item Update \texttt{NEWS.md} with information for this release
+
+  \end{enumerate}
+  %
   \item Prepare release notes
   
   \item Commit locally

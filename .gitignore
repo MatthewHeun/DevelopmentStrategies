@@ -3,5 +3,5 @@
 *.blg
 *.out
 *.log
-*.pdf
+BranchStrategy.pdf
 *.synctex.gz

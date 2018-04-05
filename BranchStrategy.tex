@@ -182,6 +182,8 @@ Use the following steps to develop a feature.
     \item Delete locally: \texttt{git branch -d newfeature}
 
     \item Delete remote (if necessary): \texttt{git push -d origin newfeature} 
+	
+	\item Prune from other machines (if necessary): \texttt{git remote prune origin} 
 
   \end{enumerate}
   %
@@ -305,6 +307,8 @@ Use the following steps to release a new version (\texttt{x.x.x}).
     \item Delete locally: \texttt{git branch -d release-x.x.x}
 
     \item Delete remote (if necessary): \texttt{git push -d origin release-x.x.x} 
+	
+	\item Prune from other machines (if necessary): \texttt{git remote prune origin} 
 
   \end{enumerate}
   
@@ -424,6 +428,8 @@ Execute the following steps to perform a hotfix to the current release.
     \item Delete locally: \texttt{git branch -d hotfix-x.x.x}
 
     \item Delete remote (if necessary): \texttt{git push -d origin hotfix-x.x.x} 
+
+	\item Prune from other machines (if necessary): \texttt{git remote prune origin} 
 
   \end{enumerate}
   

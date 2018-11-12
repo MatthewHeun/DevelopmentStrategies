@@ -335,7 +335,20 @@ Execute the following steps to perform a hotfix to the current release.
   \item Develop the fix
 	
   \item Update documentation to reflect new version (\texttt{x.x.x}) and date.
-  
+        At a minimum:
+  %
+  \begin{enumerate}
+
+    \item Update \texttt{DESCRIPTION}, including \texttt{Version:} and \texttt{Date:} fields 
+
+    \item Update \texttt{NEWS.md} with release notes
+	
+	\item Re-run \texttt{Build pkgdown} from Addins menu or \\
+		  \verb#pkgdown:::build_site_external()# at the command line.
+		  This step updates the version number on \texttt{github.io} website documentation. 
+
+  \end{enumerate}
+  %  
   \item Prepare release notes
   
   \item Commit locally

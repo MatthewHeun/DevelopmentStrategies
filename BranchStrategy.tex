@@ -238,7 +238,23 @@ Use the following steps to prepare for a release.
 
   \end{enumerate}
   
-  \item If on \texttt{CRAN}, \texttt{devtools::release()} to \texttt{CRAN} 
+  \item If package is on CRAN:
+  
+	\begin{enumerate}
+	  
+	  \item Switch to \texttt{master} branch
+
+	  \item \verb+devtools::spell_check()+
+
+	  \item \verb+devtools::check_win_devel()+
+
+	  \item \verb+devtools::check_rhub()+
+
+	  \item \verb+devtools::release()+, 
+            but don't actually submit to CRAN.
+            
+	\end{enumerate}
+
 
 \end{enumerate}
 
@@ -324,6 +340,29 @@ Use the following steps to release a new version (\texttt{x.x.x}).
   
 \end{enumerate}
   
+
+%++++++++++++++++++++++++++++++
+\subsection{Submit to CRAN} 
+\label{sec:submit_to_cran}
+%++++++++++++++++++++++++++++++
+
+If the package is on CRAN, 
+use the following steps to submit.
+
+%
+\begin{enumerate}
+
+  \item Switch to master branch: \texttt{git checkout master} 
+
+  \item \texttt{devtools::release()}
+  
+  \item Answer all questions
+
+  \item Switch back to develop branch: \texttt{git checkout develop} 
+
+\end{enumerate}
+%
+
 
 %++++++++++++++++++++++++++++++
 \subsection{Perform a hotfix} 

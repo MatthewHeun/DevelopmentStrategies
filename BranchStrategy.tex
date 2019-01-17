@@ -242,8 +242,6 @@ Use the following steps to prepare for a release.
   
 	\begin{enumerate}
 	  
-	  \item Switch to \texttt{master} branch
-
 	  \item \verb+devtools::spell_check()+
 
 	  \item \verb+devtools::check_win_devel()+
@@ -252,6 +250,8 @@ Use the following steps to prepare for a release.
 
 	  \item \verb+devtools::release()+, 
             but don't actually submit to CRAN.
+            Ignore \texttt{ERROR: No upstream branch}, because
+            the \texttt{release-x.x.x} branch may not be on GitHub.
             
 	\end{enumerate}
 

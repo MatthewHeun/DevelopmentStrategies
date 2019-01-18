@@ -189,6 +189,22 @@ Use the following steps to develop a feature.
 	\item Prune from other machines (if necessary): \texttt{git remote prune origin} 
 
   \end{enumerate}
+  
+  \item If intending to submit to CRAN, 
+        run the following steps.
+  
+  \begin{enumerate}
+	  
+    \item \verb+devtools::spell_check()+
+
+    \item \verb+devtools::check_win_devel()+
+
+    \item \verb+devtools::check_rhub(interactive = FALSE)+
+
+    \item \verb+devtools::release()+ \\
+          But don't actually release to CRAN!
+            
+  \end{enumerate}
   %
 \end{enumerate}
 
@@ -206,6 +222,22 @@ Use the following steps to prepare for a release.
 
   \item Create a release branch: \texttt{git checkout -b release-x.x.x develop} 
 
+  \item If the \texttt{release-x.x.x} branch is to be pushed to github
+        (necessary if you want to submit to CRAN), 
+        RStudio won't be able to do so until you
+  %
+  \begin{enumerate}
+
+    \item Commit locally
+
+    \item Make an initial push of the \texttt{release-x.x.x} branch
+	      to the origin (github): 
+		  \texttt{git push -u origin release-x.x.x} 
+	
+	\item Future pushes to github can be made using the RStudio interface.
+
+  \end{enumerate}
+  %
   \item Update documentation to reflect new version (\texttt{x.x.x}) and date.
         At a minimum:
   %
@@ -223,38 +255,6 @@ Use the following steps to prepare for a release.
   \end{enumerate}
   %
   \item Commit locally
-  
-  \item If the \texttt{release-x.x.x} branch is to be pushed to github, RStudio won't be able to do so until you
-  %
-  \begin{enumerate}
-
-    \item Commit locally
-
-    \item Make an initial push of the \texttt{release-x.x.x} branch
-	      to the origin (github): 
-		  \texttt{git push -u origin release-x.x.x} 
-	
-	\item Future pushes to github can be made using the RStudio interface.
-
-  \end{enumerate}
-  
-  \item If package is on CRAN:
-  
-	\begin{enumerate}
-	  
-	  \item \verb+devtools::spell_check()+
-
-	  \item \verb+devtools::check_win_devel()+
-
-	  \item \verb+devtools::check_rhub(interactive = FALSE)+
-
-	  \item \verb+devtools::release()+, 
-            but don't actually submit to CRAN.
-            Ignore \texttt{ERROR: No upstream branch}, because
-            the \texttt{release-x.x.x} branch may not be on GitHub.
-            
-	\end{enumerate}
-
 
 \end{enumerate}
 
@@ -268,6 +268,27 @@ Use the following steps to release a new version (\texttt{x.x.x}).
 
 \begin{enumerate}
 
+  \item If submitting to CRAN:
+  
+	\begin{enumerate}
+	  
+	  \item \verb+devtools::spell_check()+
+
+	  \item \verb+devtools::check_win_devel()+
+
+	  \item \verb+devtools::check_rhub(interactive = FALSE)+
+
+	  \item \verb+devtools::release()+ \\
+            If \texttt{ERROR: No upstream branch} occurs, 
+            push the \texttt{release-x.x.x} branch to GitHub using
+            \texttt{git push -u origin release-x.x.x}
+        
+      \item Answer all questions
+      
+      \item Verify submission to CRAN and wait for response
+            
+	\end{enumerate}
+  %
   \item Merge \texttt{release-x.x.x} into \texttt{master}
   %
   \begin{enumerate}
@@ -339,29 +360,6 @@ Use the following steps to release a new version (\texttt{x.x.x}).
   \end{enumerate}
   
 \end{enumerate}
-  
-
-%++++++++++++++++++++++++++++++
-\subsection{Submit to CRAN} 
-\label{sec:submit_to_cran}
-%++++++++++++++++++++++++++++++
-
-If the package is on CRAN, 
-use the following steps to submit.
-
-%
-\begin{enumerate}
-
-  \item Switch to master branch: \texttt{git checkout master} 
-
-  \item \texttt{devtools::release()}
-  
-  \item Answer all questions
-
-  \item Switch back to develop branch: \texttt{git checkout develop} 
-
-\end{enumerate}
-%
 
 
 %++++++++++++++++++++++++++++++

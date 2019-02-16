@@ -249,6 +249,8 @@ Use the following steps to prepare for a release.
     
 	\item Update \texttt{inst/CITATION} version number 
 	      in \texttt{note} and \texttt{testVersion} fields.
+		  
+    \item Update \texttt{cran-comments.md} if submitting to CRAN.
 
     \item \texttt{cmd-shift-B} to build the package
 	
@@ -280,6 +282,18 @@ Use the following steps to release a new version (\texttt{x.x.x}).
 	  \item \verb+devtools::check_rhub(interactive = FALSE)+
 
 	  \item \verb+devtools::check_win_devel()+
+
+	  \item \verb+revdepcheck::revdep_check(num_workers = 4)+ (in a new console)
+	  %
+	  \begin{enumerate}
+
+	    \item Note that \texttt{revdepcheck} must be installed from github. 
+		      See \url{https://github.com/r-lib/revdepcheck}.
+
+	    \item \texttt{source("https://install-github.me/r-lib/revdepcheck")}
+
+	  \end{enumerate}
+	  %
 
 	  \item \verb+devtools::release()+ \\
             If \texttt{ERROR: No upstream branch} occurs, 

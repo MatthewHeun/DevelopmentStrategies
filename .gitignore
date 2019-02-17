@@ -6,3 +6,5 @@
 BranchStrategy.pdf
 *.synctex.gz
 *.lb
+*_latexmk
+*.fls

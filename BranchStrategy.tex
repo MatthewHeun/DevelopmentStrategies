@@ -341,14 +341,20 @@ Use the following steps to release a new version (\texttt{x.x.x}).
 
 	\end{enumerate}
 	%
-	\item Local tags can be listed with \texttt{git tag -l}.
-	
-	\item Remote tags can be listed with \texttt{git ls-remote --tags origin}.
+	\item Tag admin
+	%
+	\begin{enumerate}
 
-	\item Remote tags can be pulled to the local repository with \texttt{git fetch --tags}.
+	  \item List local tags: \texttt{git tag -l}.
 	
-	\item Check out to a tag with \texttt{git checkout tags/vx.x.x}.
+	  \item List remote tags: \texttt{git ls-remote --tags origin}.
+
+	  \item Pull remote tags to local repo: \texttt{git fetch --tags}.
 	
+	  \item Check out at a tag: \texttt{git checkout tags/vx.x.x}.
+
+	\end{enumerate}
+	%
   \end{enumerate}
   %
   \item Merge release information back into the \texttt{develop} branch

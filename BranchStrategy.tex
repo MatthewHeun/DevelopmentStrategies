@@ -264,6 +264,8 @@ Use the following steps to prepare for a release.
 	\item Update \texttt{inst/CITATION} version number 
 	      in \texttt{note} and \texttt{textVersion} fields.
 		  
+    \item Update \texttt{LICENSE.md} in a new year.
+		  
     \item Update \texttt{cran-comments.md} if submitting to CRAN.
 
     \item \texttt{cmd-shift-B} to build the package
@@ -429,8 +431,15 @@ Execute the following steps to perform a hotfix to the current release.
   \begin{enumerate}
 
     \item Update \texttt{DESCRIPTION}, including \texttt{Version:} and \texttt{Date:} fields 
-
-    \item Update \texttt{NEWS.md} with release notes
+	
+    \item Update \texttt{NEWS.md} with version number, date, and release notes
+    
+	\item Update \texttt{inst/CITATION} version number 
+	      in \texttt{note} and \texttt{textVersion} fields.
+		  
+    \item Update \texttt{LICENSE.md} in a new year.
+		  
+    \item Update \texttt{cran-comments.md} if submitting to CRAN.
 	
 	\item Re-run \texttt{cmd-shift-W} or \texttt{Build pkgdown} from Addins menu or \\
 		  \verb#pkgdown:::build_site_external()# at the command line.

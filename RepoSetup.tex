@@ -78,6 +78,13 @@ and reduce time spent searching for nuances of the setup process.
 \label{sec:testing_setup}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Set up the package for testing with
+
+\begin{itemize}
+
+  \item \verb|usethis::use_testthat()|
+
+\end{itemize}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -172,11 +179,9 @@ Set up for GitHub pages with
 
   \item \verb|usethis::use_pkgdown_github_pages()|.
   
-  \item
+  \item Turn on GitHub pages in the website for the repository.
 
 \end{itemize}
-%
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -197,7 +202,25 @@ Set up badges for the README.Rmd page with the following:
   \item markdown text for the \verb|R-CMD-check passing| badge from the setup for testing step.
 
 \end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Miscellaneous}
+\label{sec:misc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Here are some miscellaneous actions to take when setting up a package:
+
+\begin{itemize}
+
+  \item \verb|usethis::use_roxygen_md()| to allow markdown in roxygen documentation.
+
+  \item
+
+\end{itemize}
 %
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion} 

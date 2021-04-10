@@ -135,6 +135,9 @@ Set up for code coverage reporting by doing the following:
   \item Go to \url{https://codecov.io}, log in, click \verb|x Repositories| and add 
   		the new repository to the list of repositories for code coverage.
   
+  \item Say \verb|usethis::use_coverage()| to set up code coverage 
+		for the package with \url{https://codecov.io}.
+  
   \item Use 
   		\begin{verbatim}
 			usethis::use_github_action("test-coverage")
@@ -153,11 +156,48 @@ Set up for code coverage reporting by doing the following:
 				  - cron: "0 8 * * *"
   		\end{verbatim}
 		to the \texttt{on:} section of \verb|.github/test-coverage.yaml|
-
+		
 \end{itemize}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{GitHub pages}
+\label{sec:github_pages_setup}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Set up for GitHub pages with
+
+%
+\begin{itemize}
+
+  \item \verb|usethis::use_pkgdown_github_pages()|.
+  
+  \item
+
+\end{itemize}
+%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Badges}
+\label{sec:badges}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Set up badges for the README.Rmd page with the following:
+
+\begin{itemize}
+	
+  \item \verb|usethis::use_readme_rmd()| to create the \verb|README.Rmd| page
+
+  \item \verb|usethis::use_cran_badge()|
+
+  \item \verb|usethis::use_lifecycle_badge()|
+  
+  \item markdown text for the \verb|R-CMD-check passing| badge from the setup for testing step.
+
+\end{itemize}
+%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion} 

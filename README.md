@@ -1,2 +1,2 @@
-# GitBranching
-My approach to branching git repositories
+# DevelopmentStrategies
+My approach to developing *R* packages with continuous integration (CI) in git repositories.

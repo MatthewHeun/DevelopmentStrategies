@@ -74,6 +74,39 @@ and reduce time spent searching for nuances of the setup process.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Initialization}
+\label{sec:initialiation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+
+  \item \verb|usethis::use_readme_rmd()| to create the \verb|README.Rmd| page
+
+  \item \verb|usethis::use_roxygen_md()| to allow markdown in roxygen documentation.
+  
+  \item \verb|usethis::use_spell_check()| to set up automated spell checking.
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{GitHub pages}
+\label{sec:github_pages_setup}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Set up for GitHub pages with
+
+%
+\begin{itemize}
+
+  \item \verb|usethis::use_pkgdown_github_pages()|.
+  
+  \item Turn on GitHub pages in the website for the repository.
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Setup for testing} 
 \label{sec:testing_setup}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -115,7 +148,8 @@ do the following:
   \item Add nightly builds with 
   		\begin{verbatim}
 			schedule:
-			  - cron: "0 7 * * *  # Build main branch daily at 7 AM UTC, 2 AM EST, 3 AM EDT.
+			  # Build main branch daily at 7 AM UTC, 2 AM EST, 3 AM EDT.
+			  - cron: "0 7 * * *"
 		\end{verbatim}
 	    to the \texttt{on:} section of \texttt{.github/R-CMD-check.yaml}.\
 		
@@ -168,23 +202,6 @@ Set up for code coverage reporting by doing the following:
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{GitHub pages}
-\label{sec:github_pages_setup}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Set up for GitHub pages with
-
-%
-\begin{itemize}
-
-  \item \verb|usethis::use_pkgdown_github_pages()|.
-  
-  \item Turn on GitHub pages in the website for the repository.
-
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Badges}
 \label{sec:badges}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -193,8 +210,6 @@ Set up badges for the README.Rmd page with the following:
 
 \begin{itemize}
 	
-  \item \verb|usethis::use_readme_rmd()| to create the \verb|README.Rmd| page
-
   \item \verb|usethis::use_cran_badge()|
 
   \item \verb|usethis::use_lifecycle_badge()|
@@ -202,24 +217,6 @@ Set up badges for the README.Rmd page with the following:
   \item markdown text for the \verb|R-CMD-check passing| badge from the setup for testing step.
 
 \end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Miscellaneous}
-\label{sec:misc}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Here are some miscellaneous actions to take when setting up a package:
-
-\begin{itemize}
-
-  \item \verb|usethis::use_roxygen_md()| to allow markdown in roxygen documentation.
-
-  \item
-
-\end{itemize}
-%
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

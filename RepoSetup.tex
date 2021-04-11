@@ -69,6 +69,9 @@ and reduce time spent searching for nuances of the setup process.
   \item Spelling is important.
   
   \item Spell checking should be done as a regular part of code testing.
+  
+  \item \verb|usethis::use_pkgdown_github_pages()|. 
+  		Remember to turn on GitHub pages at the \url{github.com} page for the repository.
 
 \end{enumerate}
 
@@ -85,23 +88,6 @@ and reduce time spent searching for nuances of the setup process.
   \item \verb|usethis::use_roxygen_md()| to allow markdown in roxygen documentation.
   
   \item \verb|usethis::use_spell_check()| to set up automated spell checking.
-
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{GitHub pages}
-\label{sec:github_pages_setup}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Set up for GitHub pages with
-
-%
-\begin{itemize}
-
-  \item \verb|usethis::use_pkgdown_github_pages()|.
-  
-  \item Turn on GitHub pages in the website for the repository.
 
 \end{itemize}
 
@@ -130,7 +116,7 @@ To set up a repository for GitHub Actions CI testing in four tese environments
 (macOS-latest, windows-latest, ubuntu-latest, and ubuntu-devel), 
 do the following:
 %
-\begin{enumerate}
+\begin{itemize}
 
   \item Use 
   		\begin{verbatim}
@@ -161,7 +147,7 @@ do the following:
 		to the \texttt{Install dependencies} section of
 		\texttt{.github/R-CMD-check.yaml}.
 		
-\end{enumerate}
+\end{itemize}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -197,6 +183,14 @@ Set up for code coverage reporting by doing the following:
 				  - cron: "0 8 * * *"
   		\end{verbatim}
 		to the \texttt{on:} section of \verb|.github/test-coverage.yaml|
+		
+  \item To build repositories that depend on packages that are outside of \texttt{CRAN}, 
+		Add lines like this
+	        \begin{verbatim}
+				remotes::install_github("MatthewHeun/name_of_repository")
+			\end{verbatim}
+		to the \texttt{Install dependencies} section of
+		\texttt{.github/test-coverage.yaml}.
 		
 \end{itemize}
 

@@ -65,7 +65,7 @@ will improve my software development processes.
 
 \begin{enumerate}
 
-  \item The \texttt{master} and \texttt{develop} branches are persistant
+  \item The \texttt{master/main} and \texttt{develop} branches are persistant
   
   \item Only one (1) \texttt{release-x.x.x} branch can exist at any given time
 
@@ -99,17 +99,17 @@ can be used for this purpose.
 %++++++++++++++++++++++++++++++
 
 Use the following workflow to establish a repository and 
-create the \texttt{master} (release) and \texttt{develop} branches.
+create the \texttt{master/main} (release) and \texttt{develop} branches.
 %
 \begin{enumerate}
 
   \item Create a git repository
 
-  \item Clone the repository, duplicating the \texttt{master} branch on the local computer:
+  \item Clone the repository, duplicating the \texttt{master/main} branch on the local computer:
   		\texttt{git clone git@github.com:MatthewHeun/<<RepositoryName>>.git}
   
   \item Create the \texttt{develop} branch: 
-  		\texttt{git checkout -b develop master}
+  		\texttt{git checkout -b develop master/main}
 		
   \item Make an initial push of the \texttt{develop} branch to origin (github):
         \texttt{git push -u origin develop}
@@ -322,11 +322,11 @@ Use the following steps to release a new version (\texttt{x.x.x}).
             
 	\end{enumerate}
   %
-  \item Merge \texttt{release-x.x.x} into \texttt{master}
+  \item Merge \texttt{release-x.x.x} into \texttt{master/main}
   %
   \begin{enumerate}
 
-    \item Switch to master branch: \texttt{git checkout master} 
+    \item Switch to master/main branch: \texttt{git checkout master/main} 
 
     \item Perform merge: \texttt{git merge --no-ff release-x.x.x}
 	
@@ -336,7 +336,7 @@ Use the following steps to release a new version (\texttt{x.x.x}).
 	
   \end{enumerate}
   %
-  \item Push \texttt{master} to github
+  \item Push \texttt{master/main} to github
   
   \item Tag the release
   %
@@ -417,9 +417,9 @@ Execute the following steps to perform a hotfix to the current release.
 
 \begin{enumerate}
 
-  \item Switch to master branch: \texttt{git checkout master} 
+  \item Switch to master/main branch: \texttt{git checkout master/main} 
 
-  \item Create hotfix branch: \texttt{git checkout -b hotfix-x.x.x master} 
+  \item Create hotfix branch: \texttt{git checkout -b hotfix-x.x.x master/main} 
 	
   \item Develop the fix
 	
@@ -458,11 +458,11 @@ Execute the following steps to perform a hotfix to the current release.
 
   \end{enumerate}
   %
-  \item Merge \texttt{hotfix-x.x.x} into \texttt{master}  
+  \item Merge \texttt{hotfix-x.x.x} into \texttt{master/main}  
   %
   \begin{enumerate}
 
-    \item Switch to master branch: \texttt{git checkout master} 
+    \item Switch to master/main branch: \texttt{git checkout master/main} 
 	
     \item Perform merge: \texttt{git merge --no-ff hotfix-x.x.x} 
 	
@@ -470,7 +470,7 @@ Execute the following steps to perform a hotfix to the current release.
 	
 	\item Save the comment using \texttt{ZZ} (``save'' in \texttt{vi})
 	
-	\item Push \texttt{master} branch to GitHub 
+	\item Push \texttt{master/main} branch to GitHub 
 
   \end{enumerate}
   %
@@ -535,7 +535,7 @@ Execute the following steps to perform a hotfix to the current release.
   %
   \begin{enumerate}
 
-    \item Switch to \texttt{master} branch: \texttt{git checkout master}
+    \item Switch to \texttt{master/main} branch: \texttt{git checkout master/main}
 
     \item Delete locally: \texttt{git branch -d hotfix-x.x.x}
 

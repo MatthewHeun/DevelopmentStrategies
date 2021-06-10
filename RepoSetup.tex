@@ -1,0 +1,230 @@
+\documentclass{article}
+
+\usepackage{graphicx}			% Provides graphics utilities
+\graphicspath{ {figures/} }		% Sets graphics path
+\usepackage{pdfpages}   		% Allows pdfs to be inserte into this document
+\usepackage[hyphens]{url}		% Breaks long URLs across lines
+
+% Load last
+\usepackage{hyperref}			% Makes hyperlinks in .pdf output
+
+
+\bibliographystyle{abbrv}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Repo Setup Strategy}
+\author{Matthew Kuperus Heun}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This document gives my strategy for setting up repositories for 
+\texttt{R} pacage development. 
+It provides several reminders for important aspects of the setup process.
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction} 
+\label{sec:introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\texttt{R} packages are a great way to bundle related functions together.
+Development of \texttt{R} packages is greatly assisted by 
+continuous integration (CI) and other development strategies.
+
+But setting up a repository for CI can be difficult.
+Further complicating matters, setting up a repository is done rarely, 
+so some of the steps are easy to forget.
+
+This document provides reminders of the steps 
+and best practices for the setup process.
+Consulting this document will speed the setup process
+and reduce time spent searching for nuances of the setup process.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Rules} 
+\label{sec:rules}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+
+  \item Unit testing is essential for providing confidence in package functionality over time.
+  
+  \item Packages should never drop below 100\% unit testing code coverage.
+  
+  \item Unit testing should be done for every commit on the \texttt{main} and \texttt{develop}
+        branches.
+		
+  \item Unit testing should be done nightly.
+  
+  \item Spelling is important.
+  
+  \item Spell checking should be done as a regular part of code testing.
+  
+  \item \verb|usethis::use_pkgdown_github_pages()|. 
+  		Remember to turn on GitHub pages at the \url{github.com} page for the repository.
+
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Initialization}
+\label{sec:initialiation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+
+  \item \verb|usethis::use_readme_rmd()| to create the \verb|README.Rmd| page
+
+  \item \verb|usethis::use_roxygen_md()| to allow markdown in roxygen documentation.
+  
+  \item \verb|usethis::use_spell_check()| to set up automated spell checking.
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Setup for testing} 
+\label{sec:testing_setup}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Set up the package for testing with
+
+\begin{itemize}
+
+  \item \verb|usethis::use_testthat()|
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Setup for continuous integration}
+\label{sec:ci_setup}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The \texttt{R} community has settled on GitHub Actions for continuous integration testing.
+To set up a repository for GitHub Actions CI testing in four tese environments
+(macOS-latest, windows-latest, ubuntu-latest, and ubuntu-devel), 
+do the following:
+%
+\begin{itemize}
+
+  \item Use 
+  		\begin{verbatim}
+			usethis::use_github_action_check_standard()
+  	 	\end{verbatim}
+		to add the file \texttt{.github/R-CMD-check.yaml} 
+		to the repository.
+        
+  \item Add 
+  		\begin{verbatim}
+			- develop
+		\end{verbatim}
+		to the list of branches in the file \texttt{.github/R-CMD-check.yaml}.
+  
+  \item Add nightly builds with 
+  		\begin{verbatim}
+			schedule:
+			  # Build main branch daily at 7 AM UTC, 2 AM EST, 3 AM EDT.
+			  - cron: "0 7 * * *"
+		\end{verbatim}
+	    to the \texttt{on:} section of \texttt{.github/R-CMD-check.yaml}.\
+		
+  \item To build repositories that depend on packages that are outside of \texttt{CRAN}, 
+		Add lines like this
+	        \begin{verbatim}
+				remotes::install_github("MatthewHeun/name_of_repository")
+			\end{verbatim}
+		to the \texttt{Install dependencies} section of
+		\texttt{.github/R-CMD-check.yaml}.
+		
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Set up for code coverage}
+\label{sec:codecov_setup}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Set up for code coverage reporting by doing the following:
+%
+\begin{itemize}
+
+  \item Go to \url{https://codecov.io}, log in, click \verb|x Repositories| and add 
+  		the new repository to the list of repositories for code coverage.
+  
+  \item Say \verb|usethis::use_coverage()| to set up code coverage 
+		for the package with \url{https://codecov.io}.
+  
+  \item Use 
+  		\begin{verbatim}
+			usethis::use_github_action("test-coverage")
+		\end{verbatim}
+		to create the \verb|.github/test-coverage.yaml| file in the repository. 
+		This file creates the GitHub Action for 
+		uploading code coverage results to \url{https://codecov.io}.
+		
+  \item Eliminate any branches besides \texttt{main} or \texttt{master}
+  		in the \verb|.github/test-coverage.yaml| file.
+		
+  \item To do nightly code coverage checks, add
+  		\begin{verbatim}
+			schedule:
+				  # Build main daily at 8 AM UTC, 3 AM EST, 4 AM EDT, one hour after nightly builds.
+				  - cron: "0 8 * * *"
+  		\end{verbatim}
+		to the \texttt{on:} section of \verb|.github/test-coverage.yaml|
+		
+  \item To build repositories that depend on packages that are outside of \texttt{CRAN}, 
+		Add lines like this
+	        \begin{verbatim}
+				remotes::install_github("MatthewHeun/name_of_repository")
+			\end{verbatim}
+		to the \texttt{Install dependencies} section of
+		\texttt{.github/test-coverage.yaml}.
+		
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Badges}
+\label{sec:badges}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Set up badges for the README.Rmd page with the following:
+
+\begin{itemize}
+	
+  \item \verb|usethis::use_cran_badge()|
+
+  \item \verb|usethis::use_lifecycle_badge()|
+  
+  \item markdown text for the \verb|R-CMD-check passing| badge from the setup for testing step.
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion} 
+\label{sec:conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The strategies discussed above will greatly assist the setup of any repository 
+for \texttt{R} package development.
+
+
+
+
+% \bibliography{references}
+
+
+\end{document}

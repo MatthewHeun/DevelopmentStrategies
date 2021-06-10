@@ -203,6 +203,8 @@ Use the following steps to develop a feature.
 
     \item \verb+devtools::check_rhub(interactive = FALSE)+
 	
+    \item \verb+revdepcheck::revdep_reset()+
+
     \item \verb+revdepcheck::revdep_check(num_workers = 4)+
     %
     \begin{enumerate}
@@ -210,7 +212,7 @@ Use the following steps to develop a feature.
       \item Note that \texttt{revdepcheck} must be installed from github. 
             See \url{https://github.com/r-lib/revdepcheck}.
 
-      \item \texttt{source("https://install-github.me/r-lib/revdepcheck")}
+	  \item \verb+devtools::install_github("r-lib/revdepcheck")+
 
     \end{enumerate}
     %
@@ -263,6 +265,8 @@ Use the following steps to prepare for a release.
     
 	\item Update \texttt{inst/CITATION} version number 
 	      in \texttt{note} and \texttt{textVersion} fields.
+		  
+    \item Update \texttt{LICENSE.md} in a new year.
 		  
     \item Update \texttt{cran-comments.md} if submitting to CRAN.
 
@@ -357,7 +361,7 @@ Use the following steps to release a new version (\texttt{x.x.x}).
 
 	\end{enumerate}
 	%
-	\item Tag admin (for reference)
+	\item Tag admin (for reference):
 	%
 	\begin{enumerate}
 
@@ -429,8 +433,15 @@ Execute the following steps to perform a hotfix to the current release.
   \begin{enumerate}
 
     \item Update \texttt{DESCRIPTION}, including \texttt{Version:} and \texttt{Date:} fields 
-
-    \item Update \texttt{NEWS.md} with release notes
+	
+    \item Update \texttt{NEWS.md} with version number, date, and release notes
+    
+	\item Update \texttt{inst/CITATION} version number 
+	      in \texttt{note} and \texttt{textVersion} fields.
+		  
+    \item Update \texttt{LICENSE.md} in a new year.
+		  
+    \item Update \texttt{cran-comments.md} if submitting to CRAN.
 	
 	\item Re-run \texttt{cmd-shift-W} or \texttt{Build pkgdown} from Addins menu or \\
 		  \verb#pkgdown:::build_site_external()# at the command line.
@@ -554,7 +565,8 @@ Execute the following steps to perform a hotfix to the current release.
 \label{sec:conclusion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The rules and workflows above will greatly assist development of projects ...
+The rules and workflows above will greatly assist
+development of \texttt{R} packages.
 
 
 

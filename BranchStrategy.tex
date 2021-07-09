@@ -123,6 +123,12 @@ create the \texttt{master/main} (release) and \texttt{develop} branches.
   
 \end{enumerate}
 
+To set up a repository with Zenodo for DOI creation, see 
+\url{https://guides.github.com/activities/citable-code/}
+
+To add a DOI badge to `Readme.md` or `Readme.Rmd`, see
+\url{https://gist.github.com/seignovert/ae6771f400ca464d294261f42900823a}
+
 
 %++++++++++++++++++++++++++++++
 \subsection{Develop a feature (\texttt{newfeature})} 
@@ -280,6 +286,7 @@ Use the following steps to prepare for a release.
 	
 	\item \texttt{cmd-shift-W} to update the GitHub pages website 
 	      with new version number and documentation.
+		  Alternatively, \verb#pkgdown:::build_site_external()# at the command line.
 		  
   \end{enumerate}
   %

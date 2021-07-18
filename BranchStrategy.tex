@@ -318,7 +318,18 @@ Use the following steps to release a new version (\texttt{x.x.x}).
 
 	  \item \verb+devtools::check_rhub(interactive = FALSE)+
 
-	  \item \verb+revdepcheck::revdep_check(num_workers = 4)+
+	  \item \verb+revdepcheck::revdep_reset()+
+
+      \item \verb+revdepcheck::revdep_check(num_workers = 4)+
+      %
+      \begin{enumerate}
+
+        \item Note that \texttt{revdepcheck} must be installed from github. 
+              See \url{https://github.com/r-lib/revdepcheck}.
+
+	    \item \verb+devtools::install_github("r-lib/revdepcheck")+
+
+      \end{enumerate}
 
 	  \item \verb+devtools::release()+ \\
             If \texttt{ERROR: No upstream branch} occurs, 

@@ -87,7 +87,7 @@ The workflows presented here assume familiarity
 with the Driessen branching model~\cite{Driessen:2010}. 
 (See attached figure.)
 All \texttt{git} commands must be entered 
-at the command line of the developer's local computer
+at the terminal of the developer's local computer
 in the root directory of the repository.
 Both Terminal.app (MacOS) and the Terminal window of RStudio
 can be used for this purpose.
@@ -286,7 +286,7 @@ Use the following steps to prepare for a release.
 	
 	\item \texttt{cmd-shift-W} to update the GitHub pages website 
 	      with new version number and documentation.
-		  Alternatively, \verb#pkgdown:::build_site_external()# at the command line.
+		  Alternatively, \verb#pkgdown:::build_site_external()# at the console.
 		  
   \end{enumerate}
   %
@@ -477,7 +477,7 @@ Execute the following steps to perform a hotfix to the current release.
     \item Update \texttt{cran-comments.md} if submitting to CRAN.
 	
 	\item Re-run \texttt{cmd-shift-W} or \texttt{Build pkgdown} from Addins menu or \\
-		  \verb#pkgdown:::build_site_external()# at the command line.
+		  \verb#pkgdown:::build_site_external()# at the console.
 		  This step updates the version number on \texttt{pkgdown} website documentation. 
 
   \end{enumerate}

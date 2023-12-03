@@ -82,6 +82,8 @@ and reduce time spent searching for nuances of the setup process.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{itemize}
+	
+  \item \verb|usethis::create_package("~/github/<<pkg_dir>>/")| to create an R package.
 
   \item \verb|usethis::use_readme_rmd()| to create the \verb|README.Rmd| page
 
@@ -120,10 +122,15 @@ do the following:
 
   \item Use 
   		\begin{verbatim}
-			usethis::use_github_action_check_standard()
+			usethis::use_github_action()
   	 	\end{verbatim}
-		to add the file \texttt{.github/R-CMD-check.yaml} 
-		to the repository.
+		and choose \verb|check-standard| to set up for tests.
+        
+  \item Use 
+  		\begin{verbatim}
+			usethis::use_github_action()
+  	 	\end{verbatim}
+		and choose \verb|test-coverage| to set up for test coverage with \verb|codecov|.
         
   \item Add 
   		\begin{verbatim}

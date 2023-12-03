@@ -3,8 +3,10 @@
 *.blg
 *.out
 *.log
-BranchStrategy.pdf
 *.synctex.gz
 *.lb
 *_latexmk
 *.fls
+.Rproj.user
+BranchStrategy.pdf
+RepoSetup.pdf

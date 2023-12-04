@@ -8,3 +8,5 @@ BranchStrategy.pdf
 *.lb
 *_latexmk
 *.fls
+*.pdf
+.Rproj.user

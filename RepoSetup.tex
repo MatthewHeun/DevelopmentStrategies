@@ -149,10 +149,18 @@ do the following:
 
   \item To build repositories that depend on packages that are outside of \texttt{CRAN},
 		Add lines like this
-	        \begin{verbatim}
-				remotes::install_github("MatthewHeun/name_of_repository")
+	    \begin{verbatim}
+        extra-packages: any::rcmdcheck, github::MatthewHeun/<<Name of package>>, EnergyEconomyDecoupling/<<Name of package>>
 			\end{verbatim}
-		to the \texttt{Install dependencies} section of
+		to the \\
+		\texttt{
+		jobs: \\
+      R-CMD-check:\\
+        steps:\\
+          - uses: r-lib/actions/setup-r-dependencies@v2\\
+            with:\\
+              extra-packages:}
+    section of
 		\texttt{.github/R-CMD-check.yaml}.
 
 \end{itemize}

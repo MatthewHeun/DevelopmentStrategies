@@ -88,9 +88,14 @@ and reduce time spent searching for nuances of the setup process.
 
   \item \verb|usethis::use_spell_check()| to set up automated spell checking.
 
-  \item \verb|usethis::use_pkgdown_github_pages()|.
-  		Remember to turn on GitHub pages at the \url{github.com} page for the repository.
-		Update the file \verb|_pkgdown.yaml| to include \verb|bootswatch: simplex|.
+  \item For packages whose vignettes build fine in any location,
+        say \verb|usethis::use_pkgdown_github_pages()|.
+  		  Remember to turn on GitHub pages at the \url{github.com} page for the repository.
+		    Update the file \verb|_pkgdown.yaml| to include \verb|bootswatch: simplex|.
+
+  \item For packages whose vignettes require resources only available
+        on my local computer,
+
 
 \end{itemize}
 

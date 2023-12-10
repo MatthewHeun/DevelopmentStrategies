@@ -94,7 +94,7 @@ and reduce time spent searching for nuances of the setup process.
 		    Update the file \verb|_pkgdown.yaml| to include \verb|bootswatch: simplex|.
 
   \item For packages whose vignettes require resources only available
-        on my local computer,
+        on my local computer, *******.
 
 
 \end{itemize}

@@ -94,8 +94,22 @@ and reduce time spent searching for nuances of the setup process.
 		    Update the file \verb|_pkgdown.yaml| to include \verb|bootswatch: simplex|.
 
   \item For packages whose vignettes require resources only available
-        on my local computer, *******.
+        on my local computer, deploy from the \verb|/docs| directory.
 
+        \begin{itemize}
+
+          \item \verb|usethis::use_github_pages(branch = "main", path = "/docs")|
+
+          \item Navigate to the ``Pages'' portion of the package's settings:
+                (a) set to ``Deploy from branch'',
+                (b) set to ``main'' or ``master'', and
+                (c) set to ``/docs''.
+
+        \end{itemize}
+
+  \item If the package was formerly set to deploy from
+        the \verb|/| directory of the \verb|gh-pages| branch,
+        be sure to remove the "docs" line from \verb|.gitignore|.
 
 \end{itemize}
 

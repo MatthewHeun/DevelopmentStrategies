@@ -110,6 +110,8 @@ and reduce time spent searching for nuances of the setup process.
   \item If the package was formerly set to deploy from
         the \verb|/| directory of the \verb|gh-pages| branch,
         be sure to remove the "docs" line from \verb|.gitignore|.
+        You may also need to delete the "docs" directory
+        and start again.
 
 \end{itemize}
 

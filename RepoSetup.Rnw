@@ -187,6 +187,24 @@ do the following:
 \end{itemize}
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Set up for rhub}
+\label{sec:rhub}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+\begin{itemize}
+
+  \item `rhub::rhub_setup()` in the main branch.
+
+  \item `rhub::rhub_doctor()` to check that R-hub is set up correctly.
+
+\end{itemize}
+%
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Set up for code coverage}
 \label{sec:codecov_setup}

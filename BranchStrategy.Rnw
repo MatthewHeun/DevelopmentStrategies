@@ -209,7 +209,7 @@ Use the following steps to develop a feature.
 
 	\item \verb+devtools::check_win_oldrelease()+
 
-    \item \verb+devtools::check_rhub(interactive = FALSE)+
+    \item \verb+rhub::rhub_check()+
 
     \item \verb+revdepcheck::revdep_reset()+
 
@@ -320,7 +320,7 @@ Use the following steps to release a new version (\texttt{x.x.x}).
 
       \item \verb+devtools::check_win_oldrelease()+
 
-	  \item \verb+devtools::check_rhub(interactive = FALSE)+
+    \item \verb+rhub::rhub_check()+
 
 	  \item \verb+revdepcheck::revdep_reset()+
 

@@ -196,9 +196,13 @@ do the following:
 %
 \begin{itemize}
 
-  \item `rhub::rhub_setup()` in the main branch.
+  \item \begin{verbatim}
+			  rhub::rhub_setup()
+  	 	  \end{verbatim}
 
-  \item `rhub::rhub_doctor()` to check that R-hub is set up correctly.
+  \item \begin{verbatim}
+			  rhub::rhub_doctor()
+  	 	  \end{verbatim}
 
 \end{itemize}
 %
@@ -216,6 +220,12 @@ Set up for code coverage reporting by doing the following:
 
   \item Go to \url{https://codecov.io}, log in, click \verb|x Repositories| and add
   		the new repository to the list of repositories for code coverage.
+
+  \item See \url{https://docs.codecov.com/docs/codecov-tokens}
+        to set up a token for uploading results to the GitHub repository.
+        This step involves copying the \verb|CODECOV_TOKEN|
+        from Codecov to the Actions section of the
+        Secrets and variables settings.
 
   \item Say \verb|usethis::use_coverage()| to set up code coverage
 		for the package with \url{https://codecov.io}.

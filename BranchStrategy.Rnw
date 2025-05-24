@@ -209,7 +209,7 @@ Use the following steps to develop a feature.
 
 	\item \verb+devtools::check_win_oldrelease()+
 
-    \item \verb+rhub::rhub_check()+
+    \item \verb+rhub::rhub_check(branch = "release-x.x.x")+
 
     \item \verb+revdepcheck::revdep_reset()+
 
